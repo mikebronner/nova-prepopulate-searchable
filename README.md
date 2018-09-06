@@ -22,7 +22,9 @@ composer require alexbowers/nova-prepopulate-searchable
 On any `BelongsTo` fields in your resources that are `searchable()`, you can also add `prepopulate()` to the method chain and the field will be prepopulated with values to choose from.
 
 You may optionally pass through a search query to the prepopulate method, and the keywords passed will be used for
-the search initially, before resetting the search to being empty (as it currently is)
+the search initially, before resetting the search to being empty (as it currently is).
+
+![Prepopulate Search](https://github.com/alexbowers/nova-prepopulate-searchable/blob/master/screenshots/example.gif?raw=true)
 
 ### Security
 
