@@ -5,16 +5,6 @@
         "laravel",
         "nova"
     ],
-    "repositories": {
-        "0": {
-            "type": "path",
-            "url": "../laravel-nova"
-        },
-        "local": {
-            "type": "path",
-            "url": "../nova"
-        }
-    },
     "homepage": "https://github.com/alexbowers/nova-prepopulate-searchable",
     "license": "MIT",
     "authors": [
@@ -26,20 +16,11 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "laravel/nova": "*"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^3.6",
-        "phpunit/phpunit": "7.1"
+        "laravel/nova": ">=1.0.13"
     },
     "autoload": {
         "psr-4": {
             "AlexBowers\\NovaPrepopulateSearchable\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "AlexBowers\\NovaPrepopulateSearchable\\Tests\\": "tests"
         }
     },
     "extra": {
