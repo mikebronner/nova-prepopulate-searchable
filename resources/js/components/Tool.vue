@@ -71,7 +71,7 @@
 
 <script>
 import _ from 'lodash'
-import storage from '../storage/BelongsToFieldStorage'
+import storage from '@/storage/BelongsToFieldStorage'
 import { TogglesTrashed, PerformsSearches, HandlesValidationErrors } from 'laravel-nova'
 
 export default {
