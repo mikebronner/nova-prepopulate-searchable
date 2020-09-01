@@ -1,8 +1,7 @@
 # A tool to allow BelongsTo searchable fields to be pre-populated with data
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/alexbowers/nova-prepopulate-searchable.svg?style=flat-square)](https://packagist.org/packages/alexbowers/nova-prepopulate-searchable)
-[![Quality Score](https://img.shields.io/scrutinizer/g/alexbowers/nova-prepopulate-searchable.svg?style=flat-square)](https://scrutinizer-ci.com/g/alexbowers/nova-prepopulate-searchable)
-[![Total Downloads](https://img.shields.io/packagist/dt/alexbowers/nova-prepopulate-searchable.svg?style=flat-square)](https://packagist.org/packages/alexbowers/nova-prepopulate-searchable)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/genealabs/nova-prepopulate-searchable.svg?style=flat-square)](https://packagist.org/packages/alexbowers/nova-prepopulate-searchable)
+[![Total Downloads](https://img.shields.io/packagist/dt/alexbowers/nova-prepopulate-searchable.svg?style=flat-square)](https://packagist.org/packages/genealabs/nova-prepopulate-searchable)
 
 
 This is where your description should go. Try and limit it to a paragraph or two.
