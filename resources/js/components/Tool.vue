@@ -1,18 +1,18 @@
 <template>
-    <default-field :field="field">
+    <default-field :field="field" :errors="errors">
         <template slot="field">
             <search-input
-                v-if="isSearchable && !isLocked"
                 :data-testid="`${field.resourceName}-search-input`"
-                @input="performSearch"
-                @clear="clearSelection"
-                @selected="selectResource"
+                :data="availableResources"
                 :error="hasError"
-                :value='selectedResource'
-                :data='availableResources'
-                trackBy='value'
-                searchBy='display'
+                :value="selectedResource"
+                @clear="clearSelection"
+                @input="performSearch"
+                @selected="selectResource"
                 class="mb-3"
+                searchBy="display"
+                trackBy="value"
+                v-if="isSearchable && ! isLocked && ! isReadOnly"
             >
                 <div slot="default" v-if="selectedResource" class="flex items-center">
                     <div v-if="selectedResource.avatar" class="mr-3">
@@ -31,16 +31,19 @@
                 </div>
             </search-input>
 
-            <select
-                v-if="!isSearchable || isLocked"
+            <select-control
+                v-if="!isSearchable || isLocked || isReadOnly"
                 class="form-control form-select mb-3 w-full"
                 :class="{ 'border-danger': hasError }"
                 :data-testid="`${field.resourceName}-select`"
                 :dusk="field.attribute"
                 @change="selectResourceFromSelectControl"
-                :disabled="isLocked"
+                :disabled="isLocked || isReadOnly"
+                :options="availableResources"
+                :selected="selectedResourceId"
+                label="display"
             >
-                <option value="" disabled selected>{{__('Choose')}} {{ field.name }}</option>
+                <option value="" selected :disabled="!field.nullable">&mdash;</option>
 
                 <option
                     v-for="resource in availableResources"
@@ -50,22 +53,18 @@
                 >
                     {{ resource.display}}
                 </option>
-            </select>
+            </select-control>
 
             <!-- Trashed State -->
             <div v-if="softDeletes && !isLocked">
-                <label class="flex items-center" @input="toggleWithTrashed" @keydown.prevent.space.enter="toggleWithTrashed">
-                    <checkbox :dusk="field.resourceName + '-with-trashed-checkbox'" :checked="withTrashed" />
-
-                    <span class="ml-2">
-                        {{__('With Trashed')}}
-                    </span>
-                </label>
+                <checkbox-with-label
+                    :dusk="`${field.resourceName}-with-trashed-checkbox`"
+                    :checked="withTrashed"
+                    @change="toggleWithTrashed"
+                >
+                    {{ __('With Trashed') }}
+                </checkbox-with-label>
             </div>
-
-            <p v-if="hasError" class="my-2 text-danger">
-                {{ firstError }}
-            </p>
         </template>
     </default-field>
 </template>
@@ -74,12 +73,12 @@
 import _ from 'lodash'
 import storage from '@/storage/BelongsToFieldStorage'
 import { TogglesTrashed, PerformsSearches, HandlesValidationErrors } from 'laravel-nova'
-import { mixin as clickaway } from 'vue-clickaway'
 
 export default {
     mixins: [TogglesTrashed, PerformsSearches, HandlesValidationErrors],
     props: {
         resourceName: String,
+        resourceId: {},
         field: Object,
         viaResource: {},
         viaResourceId: {},
@@ -142,11 +141,11 @@ export default {
                 this.getAvailableResources()
             }
 
-            if (this.isSearchable  && this.shouldPrepopulate) {
+            if (this.isSearchable && this.shouldPrepopulate) {
                 if (this.field.prepopulate_query) {
                     this.search = this.field.prepopulate_query;
                 }
-                
+
                 this.hasPerformedPrepopulation = true;
                 this.getAvailableResources()
                 this.search = '';
@@ -169,10 +168,12 @@ export default {
          * Fill the forms formData with details from this field
          */
         fill(formData) {
-            if (this.selectedResource) {
-                formData.append(this.field.attribute, this.selectedResource.value)
-                formData.append(this.field.attribute + '_trashed', this.withTrashed)
-            }
+            formData.append(
+                this.field.attribute,
+                this.selectedResource ? this.selectedResource.value : ''
+            )
+
+            formData.append(this.field.attribute + '_trashed', this.withTrashed)
         },
 
         /**
@@ -244,7 +245,11 @@ export default {
          * Determine if we are creating a new resource via a parent relation
          */
         creatingViaRelatedResource() {
-            return this.viaResource == this.field.resourceName && this.viaResourceId
+            return (
+                this.viaResource == this.field.resourceName &&
+                this.field.reverse &&
+                this.viaResourceId
+            )
         },
 
         /**
@@ -275,12 +280,17 @@ export default {
                     first: this.initializingWithExistingResource,
                     search: this.search,
                     withTrashed: this.withTrashed,
+                    resourceId: this.resourceId,
                 },
             }
         },
 
         isLocked() {
-            return this.viaResource == this.field.resourceName
+            return this.viaResource == this.field.resourceName && this.field.reverse
+        },
+
+        isReadonly() {
+            return this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
         },
     },
 }

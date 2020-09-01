@@ -1,20 +1,15 @@
 <?php
 
-namespace AlexBowers\NovaPrepopulateSearchable;
+namespace GeneaLabs\NovaPrepopulateSearchable;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Nova;
 
 class ToolServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot() : void
     {
         Nova::serving(function (ServingNova $event) {
             BelongsTo::macro('prepopulate', function ($query = null) {

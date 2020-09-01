@@ -9,24 +9,40 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Mike Bronner",
+            "email": "hello@genealabs.com",
+            "role": "Developer"
+        },
+        {
             "name": "Alex Bowers",
             "email": "bowersbros@gmail.com",
-            "role": "Developer"
+            "role": "Original Creator"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
         }
     ],
     "require": {
-        "php": ">=7.1.0",
-        "laravel/nova": ">=1.0.13"
+        "php": "^7.3",
+        "laravel/nova": ">=2.0.7"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.7",
+        "sebastian/phpcpd": "^5.0",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "autoload": {
         "psr-4": {
-            "AlexBowers\\NovaPrepopulateSearchable\\": "src/"
+            "GeneaLabs\\NovaPrepopulateSearchable\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "AlexBowers\\NovaPrepopulateSearchable\\ToolServiceProvider"
+                "GeneaLabs\\NovaPrepopulateSearchable\\ToolServiceProvider"
             ]
         }
     },
