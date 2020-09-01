@@ -28,12 +28,13 @@ If you discover any security related issues, please email hello@genealabs.com in
 
 ## Credits
 
-- [Alex Bowers](https://github.com/alexbowers)
+### [Alex Bowers](https://github.com/alexbowers)
 
-  Alex is the original developer of this package and has done a great job with initial development.
-- [Mike Bronner](https://github.com/mikebronner)
+Alex is the original developer of this package and has done a great job with initial development.
 
-  I started using this package and didn't want it to fall to the way-side, as it helps improve the UX of Nova significantly. Alex graceously allowed me to continue development and maintenance on his original package.
+### [Mike Bronner](https://github.com/mikebronner)
+
+I started using this package and didn't want it to fall to the way-side, as it helps improve the UX of Nova significantly. Alex graceously allowed me to continue development and maintenance on his original package.
 
 ## License
 
