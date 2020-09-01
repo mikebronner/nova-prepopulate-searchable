@@ -1,5 +1,5 @@
 {
-    "name": "alexbowers/nova-prepopulate-searchable",
+    "name": "genealabs/nova-prepopulate-searchable",
     "description": "A tool to allow BelongsTo searchable fields to be pre-populated with data",
     "keywords": [
         "laravel",
