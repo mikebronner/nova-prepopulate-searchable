@@ -7,6 +7,10 @@
 ![Prepopulate Search](https://github.com/genealabs/nova-prepopulate-searchable/blob/master/screenshots/example.gif?raw=true)
 
 
+```diff
+- Alert: the namespace of this repo has changed from `alexbowers/nova-prepopulate-searchable` to `genealabs/nova-prepopulate-searchable`. Please update your composer.json file before updating!
+```
+
 ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
