@@ -3,6 +3,7 @@
         <template slot="field">
             <div class="flex items-center">
                 <search-input
+                    v-if="isSearchable && !isLocked && !isReadonly"
                     :clearable="field.nullable"
                     :data-testid="`${field.resourceName}-search-input`"
                     :data="availableResources"
@@ -15,7 +16,6 @@
                     class="w-full"
                     searchBy="display"
                     trackBy="value"
-                    v-if="isSearchable && ! isLocked && ! isReadOnly"
                 >
                     <div
                         slot="default"
@@ -71,13 +71,13 @@
                 </search-input>
 
                 <select-control
-                    v-if="!isSearchable || isLocked || isReadOnly"
+                    v-if="!isSearchable || isLocked || isReadonly"
                     class="form-control form-select w-full"
                     :class="{ 'border-danger': hasError }"
                     :data-testid="`${field.resourceName}-select`"
                     :dusk="field.attribute"
                     @change="selectResourceFromSelectControl"
-                    :disabled="isLocked || isReadOnly"
+                    :disabled="isLocked || isReadonly"
                     :options="availableResources"
                     :selected="selectedResourceId"
                     label="display"
@@ -148,12 +148,7 @@
         ],
 
         props: {
-            // resourceName: String,
             resourceId: {},
-            // field: Object,
-            // viaResource: {},
-            // viaResourceId: {},
-            // viaRelationship: {},
         },
 
         data: () => ({
@@ -213,7 +208,7 @@
                     this.getAvailableResources();
                 }
 
-                if (this.isSearchable && this.shouldPrepopulate) {
+                if (!this.isReadonly && this.isSearchable && this.shouldPrepopulate) {
                     if (this.field.prepopulate_query) {
                         this.search = this.field.prepopulate_query;
                     }
@@ -390,11 +385,13 @@
             },
 
             isLocked() {
-                return this.viaResource == this.field.resourceName && this.field.reverse
+                return (this.viaResource == this.field.resourceName && this.field.reverse);
             },
 
             isReadonly() {
-                return this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
+                return (
+                    this.field.readonly || _.get(this.field, 'extraAttributes.readonly')
+                );
             },
 
             shouldShowTrashed() {
