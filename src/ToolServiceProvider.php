@@ -19,7 +19,10 @@ class ToolServiceProvider extends ServiceProvider
                 return $this;
             });
 
-            Nova::script('nova-prepopulate-searchable', __DIR__ . '/../dist/js/tool.js');
+            Nova::script(
+                'nova-prepopulate-searchable',
+                __DIR__ . '/../dist/js/tool.js'
+            );
         });
     }
 }
