@@ -27,6 +27,17 @@ On any `BelongsTo` fields in your resources that are `searchable()`, you can als
 You may optionally pass through a search query to the prepopulate method, and the keywords passed will be used for
 the search initially, before resetting the search to being empty (as it currently is).
 
+### Limiting Pre-Populated Items
+You can limit the prepopulated items by passing in a search string to the `prepopulated()` method like so:
+
+```php
+    BelongsTo::make("Archive")
+        ->searchable()
+        ->prepopulate("test").
+```
+
+This would prepopulate all archives that have test in their display field.
+
 ### Security
 
 If you discover any security related issues, please email hello@genealabs.com instead of using the issue tracker.
