@@ -27,7 +27,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "laravel/nova": ">=2.0.7"
+        "laravel/nova": ">=3.8.4"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.7",
