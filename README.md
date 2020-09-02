@@ -8,7 +8,8 @@
 
 
 ```diff
-- Alert: the namespace of this repo has changed from `alexbowers/nova-prepopulate-searchable` to `genealabs/nova-prepopulate-searchable`. Please update your composer.json file before updating!
+- Alert: the namespace of this repo has changed from `alexbowers/nova-prepopulate-searchable`
+- to `genealabs/nova-prepopulate-searchable`. Please update your composer.json file before updating!
 ```
 
 ## Installation
