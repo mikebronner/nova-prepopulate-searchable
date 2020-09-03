@@ -13,6 +13,7 @@
 ```
 
 ## Requirements
+- PHP 7.3+
 - Laravel 7.0+
 - Nova 3.8.4+
 

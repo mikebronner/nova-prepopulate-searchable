@@ -27,7 +27,8 @@
     ],
     "require": {
         "php": "^7.3",
-        "laravel/nova": ">=3.8.4"
+        "laravel/nova": ">=3.8.4",
+        "illuminate/support": "^7.0"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.7",
