@@ -12,6 +12,10 @@
 - to `genealabs/nova-prepopulate-searchable`. Please update your composer.json file before updating!
 ```
 
+## Requirements
+- Laravel 7.0+
+- Nova 3.8.4+
+
 ## Installation
 
 You can install the package in to a Laravel app that uses [Nova](https://nova.laravel.com) via composer:
