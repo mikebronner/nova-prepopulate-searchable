@@ -19,6 +19,12 @@ class ToolServiceProvider extends ServiceProvider
                 return $this;
             });
 
+            BelongsTo::macro('previewLink', function () {
+                $this->meta['previewLink'] = true;
+
+                return $this;
+            });
+
             Nova::script(
                 'nova-prepopulate-searchable',
                 __DIR__ . '/../dist/js/tool.js'

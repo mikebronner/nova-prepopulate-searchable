@@ -124,6 +124,11 @@
                 >
                     {{ __('With Trashed') }}
                 </checkbox-with-label>
+                <span class="ml-2" v-if="isPreviewLink">
+                    <a :href="previewLink.link" target = "_blank" class="no-underline dim text-primary font-bold"> 
+                        {{ previewLink.display }}
+                    </a>
+                </span>
             </div>
         </template>
     </default-field>
@@ -131,7 +136,7 @@
 
 <script>
     import _ from 'lodash';
-    import storage from '@/storage/BelongsToFieldStorage';
+    import storage from '../storage/BelongsToFieldStorage';
     import {
         FormField,
         TogglesTrashed,
@@ -327,6 +332,12 @@
         },
 
         computed: {
+            isPreviewLink() {
+                return this.selectedResource && this.field.previewLink ? true : false
+            },
+            previewLink() {
+                return { display: this.selectedResource.display, link : '/admin/resources/' + this.field.resourceName + '/' + this.selectedResource.value };
+            },
             /**
              * Determine if we are editing and existing resource
              */
