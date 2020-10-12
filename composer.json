@@ -27,8 +27,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "laravel/nova": "^3.9",
-        "illuminate/support": "^8.0"
+        "laravel/nova": "^3.9"
     },
     "autoload": {
         "psr-4": {
