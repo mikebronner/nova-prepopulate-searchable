@@ -124,7 +124,9 @@
                 >
                     {{ __('With Trashed') }}
                 </checkbox-with-label>
-                <span class="ml-2" v-if="isPreviewLink">
+            </div>
+            <div v-if="shouldShowPreview" class="pt-3">
+                <span>
                     <a :href="previewLink.link" target = "_blank" class="no-underline dim text-primary font-bold"> 
                         {{ previewLink.display }}
                     </a>
@@ -332,7 +334,7 @@
         },
 
         computed: {
-            isPreviewLink() {
+            shouldShowPreview() {
                 return this.selectedResource && this.field.previewLink ? true : false
             },
             previewLink() {
