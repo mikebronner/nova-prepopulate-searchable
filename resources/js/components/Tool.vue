@@ -125,7 +125,7 @@
                     {{ __('With Trashed') }}
                 </checkbox-with-label>
             </div>
-            <div v-if="shouldShowPreview" class="pt-3">
+            <div v-if="shouldShowPreview && selectedResource" class="mt-3">
                 <span>
                     <a :href="previewLink.link" target = "_blank" class="no-underline dim text-primary font-bold"> 
                         {{ previewLink.display }}
@@ -159,6 +159,7 @@
         },
 
         data: () => ({
+            shouldShowPreview: false,
             availableResources: [],
             hasPerformedPrepopulation: false,
             initializingWithExistingResource: false,
@@ -223,6 +224,10 @@
                     this.hasPerformedPrepopulation = true;
                     this.getAvailableResources();
                     this.search = '';
+                }
+
+                if (this.field.previewLink) {
+                    this.shouldShowPreview = true;
                 }
 
                 this.determineIfSoftDeletes();
@@ -334,11 +339,6 @@
         },
 
         computed: {
-            shouldShowPreview() {
-                let x = this.field.previewLink;
-                debugger;
-                return this.selectedResource && this.field.previewLink ? true : false
-            },
             previewLink() {
                 return { display: this.selectedResource.display, link : '/admin/resources/' + this.field.resourceName + '/' + this.selectedResource.value };
             },
