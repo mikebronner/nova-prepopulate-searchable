@@ -335,6 +335,8 @@
 
         computed: {
             shouldShowPreview() {
+                let x = this.field.previewLink;
+                debugger;
                 return this.selectedResource && this.field.previewLink ? true : false
             },
             previewLink() {
