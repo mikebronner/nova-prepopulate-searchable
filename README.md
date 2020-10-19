@@ -43,6 +43,25 @@ You can limit the prepopulated items by passing in a search string to the `prepo
 
 This would prepopulate all archives that have test in their display field.
 
+
+### Preview Links
+
+You can display a link to a resource's detail view (after selection) using the `previewLink` method.
+
+```php
+    BelongsTo::make("Archive")
+        ->searchable()
+        ->previewLink(),
+```
+
+The `previewLink` method accepts a boolean and can be conditionally hidden, i.e: when 'Creating Via'.
+
+```php
+    BelongsTo::make("Archive")
+        ->searchable()
+        ->previewLink(! $request->viaResource),
+```
+
 ### Security
 
 If you discover any security related issues, please email hello@genealabs.com instead of using the issue tracker.
