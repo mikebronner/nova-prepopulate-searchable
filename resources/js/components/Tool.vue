@@ -175,8 +175,6 @@
          * Mount the component.
          */
         mounted() {
-            let x = Nova;
-            debugger;
             this.initializeComponent();
         },
 
