@@ -175,6 +175,8 @@
          * Mount the component.
          */
         mounted() {
+            let x = Nova;
+            debugger;
             this.initializeComponent();
         },
 
@@ -340,7 +342,10 @@
 
         computed: {
             previewLink() {
-                return { display: this.selectedResource.display, link : '/admin/resources/' + this.field.resourceName + '/' + this.selectedResource.value };
+                return { 
+                    display: this.selectedResource.display, 
+                    link : `${Nova.config.base}/resources/${this.field.resourceName}/${this.selectedResource.value}`,
+                };
             },
             /**
              * Determine if we are editing and existing resource
