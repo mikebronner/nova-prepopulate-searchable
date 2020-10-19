@@ -51,6 +51,7 @@ You can display a link to a resource's detail view (after selection) using the `
 ```php
     BelongsTo::make("Archive")
         ->searchable()
+        ->prepopulate().
         ->previewLink(),
 ```
 
@@ -59,6 +60,7 @@ The `previewLink` method accepts a boolean and can be conditionally hidden, i.e:
 ```php
     BelongsTo::make("Archive")
         ->searchable()
+        ->prepopulate().
         ->previewLink(! $request->viaResource),
 ```
 
