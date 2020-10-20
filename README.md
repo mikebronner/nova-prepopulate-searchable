@@ -55,7 +55,7 @@ You can display a link to a resource's detail view (after selection) using the `
         ->previewLink(),
 ```
 
-The `previewLink` method accepts a boolean and can be conditionally hidden, i.e: when 'Creating Via'.
+The `previewLink` method accepts a boolean and can be conditionally hidden, i.e: when 'Creating Via' a resource.
 
 ```php
     BelongsTo::make("Archive")

@@ -12,8 +12,8 @@ class ToolServiceProvider extends ServiceProvider
     public function boot() : void
     {
         Nova::serving(function (ServingNova $event) {
-            BelongsTo::macro('prepopulate', function ($value = true, $query = null) {
-                $this->meta['prepopulate'] = $value;
+            BelongsTo::macro('prepopulate', function ($query = null) {
+                $this->meta['prepopulate'] = true;
                 $this->meta['prepopulate_query'] = $query;
 
                 return $this;
