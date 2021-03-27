@@ -26,13 +26,11 @@
         }
     ],
     "require": {
-        "php": "^7.3",
-        "laravel/nova": ">=3.8.4",
-        "illuminate/support": "^7.0"
+        "laravel/nova": "^3.8",
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.7",
-        "sebastian/phpcpd": "^5.0",
         "squizlabs/php_codesniffer": "^3.4"
     },
     "autoload": {
