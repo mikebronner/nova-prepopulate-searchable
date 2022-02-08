@@ -26,9 +26,9 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0|^8.1",
-        "laravel/nova": "^3.9",
-        "illuminate/support": "^8.0|^9.0"
+        "php": "^7.4|^8.0",
+        "laravel/nova": "^3.31",
+        "illuminate/support": "^9.0"
     },
     "autoload": {
         "psr-4": {
