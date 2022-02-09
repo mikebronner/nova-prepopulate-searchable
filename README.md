@@ -12,6 +12,11 @@
 - to `genealabs/nova-prepopulate-searchable`. Please update your composer.json file before updating!
 ```
 
+## Sponsors
+We thank the following sponsors for their generosity. Please take a moment to check them out:
+
+- [LIX](https://lix-it.com)
+
 ## Requirements
 - PHP 7.3+
 - Laravel 7.0+
